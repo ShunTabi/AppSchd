@@ -1,0 +1,16 @@
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Functions\Debug\Record.dll
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Functions\Debug\Record.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\Record.dll
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\Record.pdb
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.csproj.AssemblyReference.cache
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.Properties.Resources.resources
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.RecordGenre.resources
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.RecordGoal.resources
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.RecordPlan.resources
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.RecordRecord.resources
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.RecordSearch.resources
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.csproj.GenerateResource.cache
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.csproj.CoreCompileInputs.cache
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.csproj.CopyComplete
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.dll
+E:\03.C#\01.AppSchd\AppSchd\Record\obj\Debug\Record.pdb

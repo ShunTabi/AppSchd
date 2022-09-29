@@ -1,0 +1,11 @@
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\bin\Debug\AppToDo.exe.config
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\bin\Debug\AppToDo.exe
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\bin\Debug\AppToDo.pdb
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.csproj.AssemblyReference.cache
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.csproj.SuggestedBindingRedirects.cache
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.AppToDo.resources
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.Properties.Resources.resources
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.csproj.GenerateResource.cache
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.csproj.CoreCompileInputs.cache
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.exe
+E:\03.C#\01.AppSchedule\AppToDo\AppToDo\obj\Debug\AppToDo.pdb

@@ -1,0 +1,12 @@
+E:\03.C#\01.WorkAssist\WorkAssist\WorkAssist\bin\Release\FunFile.dll
+E:\03.C#\01.WorkAssist\WorkAssist\WorkAssist\bin\Release\FunFile.pdb
+E:\03.C#\01.WorkAssist\WorkAssist\FunFile\obj\Release\FunFile.csproj.AssemblyReference.cache
+E:\03.C#\01.WorkAssist\WorkAssist\FunFile\obj\Release\FunFile.csproj.CoreCompileInputs.cache
+E:\03.C#\01.WorkAssist\WorkAssist\FunFile\obj\Release\FunFile.dll
+E:\03.C#\01.WorkAssist\WorkAssist\FunFile\obj\Release\FunFile.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Release\FunFile.dll
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Release\FunFile.pdb
+E:\03.C#\01.AppSchd\AppSchd\FunFile\obj\Release\FunFile.csproj.AssemblyReference.cache
+E:\03.C#\01.AppSchd\AppSchd\FunFile\obj\Release\FunFile.csproj.CoreCompileInputs.cache
+E:\03.C#\01.AppSchd\AppSchd\FunFile\obj\Release\FunFile.dll
+E:\03.C#\01.AppSchd\AppSchd\FunFile\obj\Release\FunFile.pdb

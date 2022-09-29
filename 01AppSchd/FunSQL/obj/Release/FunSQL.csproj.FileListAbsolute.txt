@@ -1,0 +1,14 @@
+E:\03.C#\01.WorkAssist\WorkAssist\WorkAssist\bin\Release\FunSQL.dll
+E:\03.C#\01.WorkAssist\WorkAssist\WorkAssist\bin\Release\FunSQL.pdb
+E:\03.C#\01.WorkAssist\WorkAssist\FunSQL\obj\Release\FunSQL.csproj.AssemblyReference.cache
+E:\03.C#\01.WorkAssist\WorkAssist\FunSQL\obj\Release\FunSQL.csproj.CoreCompileInputs.cache
+E:\03.C#\01.WorkAssist\WorkAssist\FunSQL\obj\Release\FunSQL.csproj.CopyComplete
+E:\03.C#\01.WorkAssist\WorkAssist\FunSQL\obj\Release\FunSQL.dll
+E:\03.C#\01.WorkAssist\WorkAssist\FunSQL\obj\Release\FunSQL.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Release\FunSQL.dll
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Release\FunSQL.pdb
+E:\03.C#\01.AppSchd\AppSchd\FunSQL\obj\Release\FunSQL.csproj.AssemblyReference.cache
+E:\03.C#\01.AppSchd\AppSchd\FunSQL\obj\Release\FunSQL.csproj.CoreCompileInputs.cache
+E:\03.C#\01.AppSchd\AppSchd\FunSQL\obj\Release\FunSQL.csproj.CopyComplete
+E:\03.C#\01.AppSchd\AppSchd\FunSQL\obj\Release\FunSQL.dll
+E:\03.C#\01.AppSchd\AppSchd\FunSQL\obj\Release\FunSQL.pdb
