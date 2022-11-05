@@ -1,0 +1,16 @@
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\AppSchd.exe.config
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\AppSchd.exe
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\AppSchd.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.csproj.AssemblyReference.cache
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.csproj.SuggestedBindingRedirects.cache
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.AppSchd.resources
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.Properties.Resources.resources
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.csproj.GenerateResource.cache
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.csproj.CoreCompileInputs.cache
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.csproj.CopyComplete
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.exe
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\obj\Debug\AppSchd.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\System.Data.SQLite.dll
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\FunFile.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\FunSQL.pdb
+E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\System.Data.SQLite.xml
