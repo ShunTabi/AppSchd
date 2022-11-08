@@ -6,6 +6,10 @@ namespace Note
 {
     public partial class NoteOneDay : UserControl
     {
+        public NoteOneDay()
+        {
+            InitializeComponent();
+        }
         public static Label l10;
         public static Label l11;
         public static DataGridView dg1;
@@ -15,10 +19,7 @@ namespace Note
         public static string NoteOneDaySearch = DateTime.Now.ToString("yyyy-MM-dd");
         public static string NOTETITLEID = "";
         public static string SOURCEID = "";
-        public NoteOneDay()
-        {
-            InitializeComponent();
-        }
+        public static string[] SubLocation = FunFile.GetString(FunFile.iniDefault, "[SUB]", "SubLocation");
         class ThisApplicationSetup
         {
             private static void CreateDataGridView(Panel p3, Panel p5, TextBox tb1, TextBox tb2, Button b1)
@@ -63,7 +64,6 @@ namespace Note
                     BorderStyle = BorderStyle.None,
                     MultiSelect = false,
                     CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
-                    Font = new Font("Meiryo UI", 8, FontStyle.Regular),
                 };
                 dg2 = new Note.DataGridViewEx
                 {
@@ -85,9 +85,8 @@ namespace Note
                     BorderStyle = BorderStyle.None,
                     MultiSelect = false,
                     CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
-                    Font = new Font("Meiryo UI", 8, FontStyle.Regular),
                 };
-                string[] ColumnNames = { "NOTETITLEID", "SOURCEID", "KINDID", "NOTEVERSION", "タイトル", "ノート", "日付","" };
+                string[] ColumnNames = { "NOTETITLEID", "SOURCEID", "KINDID", "NOTEVERSION", "タイトル", "ノート", "日付" };
                 for (int i = 0; i < ColumnNames.Length; i++)
                 {
                     dg1.Columns.Add(i.ToString(), ColumnNames[i]);
@@ -111,7 +110,7 @@ namespace Note
                 };
                 for (int i = 0; i < ColumnNames.Length; i++)
                 {
-                    if (i == 5 || i == ColumnNames.Length - 1)
+                    if (i == 5)
                     {
                         continue;
                     }
@@ -162,12 +161,37 @@ namespace Note
                         }
                         else
                         {
-                            subBox[1] = $"{subBox[1]}{output[i][1]}";
+                            subBox[2] = $"{subBox[2]}{output[i][2]}";
                         }
                     }
-                    tb1.Text = subBox[0];
-                    tb2.Text = subBox[1];
+                    tb1.Text = subBox[1];
+                    tb2.Text = subBox[2];
                     b1.Text = "更新";
+                });
+                contextMenuStrip.Items.Add("ノート表示", Note.NoteContentImg, (sender, e) =>
+                {
+                    ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
+                    NOTETITLEID = ActiveRow.Cells[0].Value.ToString();
+                    SOURCEID = ActiveRow.Cells[1].Value.ToString();
+                    string[][] output = FunSQL.SQLSELECT("SQLNote0002", Note.SQLNote0002, new string[] { "@NOTETITLEID" }, new string[] { NOTETITLEID });
+                    string[] subBox = new string[] { };
+                    for (int i = 0; i < output.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            subBox = output[i];
+                        }
+                        else
+                        {
+                            subBox[2] = $"{subBox[2]}{output[i][2]}";
+                        }
+                    }
+                    Note.NoteContentInstance = new NoteContent(subBox[1], DateTime.Parse(subBox[0]).ToString("yyyy-MM-dd"), subBox[2]);
+                    Note.NoteContentInstance.Show();
+                    Note.NoteContentInstance.Location = new Point(
+                        int.Parse(string.Format("{0}", SubLocation[0])),
+                        int.Parse(string.Format("{0}", SubLocation[1]))
+                        );
                 });
                 ActiveRow.ContextMenuStrip = contextMenuStrip;
             }
@@ -177,9 +201,7 @@ namespace Note
                 dg2.Rows.Clear();
                 string[][] output = null;
                 dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dg2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 string date1 = "";
                 string date2 = "";
                 l10.Text = "";
@@ -205,7 +227,7 @@ namespace Note
                     }
                     else if (output[i][7] != "1")
                     {
-                        subBox[5] = $"{subBox[5]}\n{output[i][5]}";
+                        subBox[5] = $"{subBox[5]}{output[i][5]}";
                     }
                     string thisDate = DateTime.Parse(output[i][6]).ToString("yyyy-MM-dd");
                     if (output[i][8] == "1")
@@ -231,8 +253,7 @@ namespace Note
                                     subBox[3],
                                     subBox[4],
                                     subBox[5],
-                                    DateTime.Parse(subBox[6]).ToString("yyyy-MM-dd"),
-                                    ""
+                                    DateTime.Parse(subBox[6]).ToString("yyyy-MM-dd")
                                 );
                         }
                         subBox = new string[] { };
@@ -402,6 +423,16 @@ namespace Note
                 p2.Width = thiSize;
                 p4.Width = thiSize;
             }
+        }
+        private void tb2_Enter(object sender, EventArgs e)
+        {
+            p1.Width = 760;
+            tb2.Width = 720;
+        }
+        private void tb2_Leave(object sender, EventArgs e)
+        {
+            p1.Width = 300;
+            tb2.Width = 250;
         }
     }
 }

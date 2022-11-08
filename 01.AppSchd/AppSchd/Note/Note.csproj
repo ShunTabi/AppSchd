@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="NoteContent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NoteContent.Designer.cs">
+      <DependentUpon>NoteContent.cs</DependentUpon>
+    </Compile>
     <Compile Include="Note.cs" />
     <Compile Include="NoteList.cs">
       <SubType>UserControl</SubType>
@@ -86,6 +92,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="NoteContent.resx">
+      <DependentUpon>NoteContent.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="NoteList.resx">
       <DependentUpon>NoteList.cs</DependentUpon>
     </EmbeddedResource>

@@ -163,7 +163,6 @@ namespace Record
                     output = FunSQL.SQLSELECT("SQLRecordGoal0001", Record.SQLRecordGoal0001, new string[] { "@GOALNAME" }, new string[] { $"%{RecordGoalSearch}%" });
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output.Length; i++)
                 {
                     dg.Rows.Add(

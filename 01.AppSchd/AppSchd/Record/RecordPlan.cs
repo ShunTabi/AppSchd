@@ -239,7 +239,6 @@ namespace Record
                     output = FunSQL.SQLSELECT("SQLRecordPlan0001", Record.SQLRecordPlan0001, new string[] { "@KEYWORD" }, new string[] { $"%{RecordPlanSearch}%" });
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output.Length; i++)
                 {
                     dg.Rows.Add(

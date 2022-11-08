@@ -18,7 +18,7 @@ namespace Note
             {
                 l.Text = FunctionName;
                 UserControl uc = null;
-                if (p.Controls.Count > 0)
+                if (p.Controls.Count > 0) 
                 {
                     p.Controls[0].Dispose();
                 }

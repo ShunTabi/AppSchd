@@ -315,7 +315,6 @@ namespace Schedule
                 CreateSchedulePanel();
                 string[][] output = FunSQL.SQLSELECT("SQLSchedule0000", Schedule.SQLSchedule0000, new string[] { "@SCHEDULEDATE" }, new string[] { $"{ScheduleOneDaySearch}%" });
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output.Length; i++)
                 {
                     dg.Rows.Add(

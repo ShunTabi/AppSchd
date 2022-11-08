@@ -6,15 +6,16 @@ namespace Note
 {
     public partial class NoteList : UserControl
     {
+        public NoteList()
+        {
+            InitializeComponent();
+        }
         public static DataGridView dg1;
         public static DataGridViewRow ActiveRow1 = null;
         public static string NOTETITLEID = "";
         public static string SOURCEID = "";
         public static string NoteListSearch = "";
-        public NoteList()
-        {
-            InitializeComponent();
-        }
+        public static string[] SubLocation = FunFile.GetString(FunFile.iniDefault, "[SUB]", "SubLocation");
         class ThisApplicationSetup
         {
             private static void CreateDataGridView(Panel p2, TextBox tb1, TextBox tb2, Button b1)
@@ -58,7 +59,6 @@ namespace Note
                     BorderStyle = BorderStyle.None,
                     MultiSelect = false,
                     CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal,
-                    Font = new Font("Meiryo UI", 8, FontStyle.Regular),
                 };
                 string[] ColumnNames = { "NOTETITLEID", "SOURCEID", "KINDID", "INFO", "ノート" };
                 for (int i = 0; i < ColumnNames.Length; i++)
@@ -119,12 +119,37 @@ namespace Note
                         }
                         else
                         {
-                            subBox[1] = $"{subBox[1]}{output[i][1]}";
+                            subBox[2] = $"{subBox[2]}{output[i][2]}";
                         }
                     }
-                    tb1.Text = subBox[0];
-                    tb2.Text = subBox[1];
+                    tb1.Text = subBox[1];
+                    tb2.Text = subBox[2];
                     b1.Text = "更新";
+                });
+                contextMenuStrip.Items.Add("ノート表示", Note.NoteContentImg, (sender, e) =>
+                {
+                    ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
+                    NOTETITLEID = ActiveRow.Cells[0].Value.ToString();
+                    SOURCEID = ActiveRow.Cells[1].Value.ToString();
+                    string[][] output = FunSQL.SQLSELECT("SQLNote0002", Note.SQLNote0002, new string[] { "@NOTETITLEID" }, new string[] { NOTETITLEID });
+                    string[] subBox = new string[] { };
+                    for (int i = 0; i < output.Length; i++)
+                    {
+                        if (i == 0)
+                        {
+                            subBox = output[i];
+                        }
+                        else
+                        {
+                            subBox[2] = $"{subBox[2]}{output[i][2]}";
+                        }
+                    }
+                    Note.NoteContentInstance = new NoteContent(subBox[1], DateTime.Parse(subBox[0]).ToString("yyyy-MM-dd"), subBox[2]);
+                    Note.NoteContentInstance.Show();
+                    Note.NoteContentInstance.Location = new Point(
+                        int.Parse(string.Format("{0}", SubLocation[0])),
+                        int.Parse(string.Format("{0}", SubLocation[1]))
+                        );
                 });
                 ActiveRow.ContextMenuStrip = contextMenuStrip;
             }
@@ -133,7 +158,6 @@ namespace Note
                 dg1.Rows.Clear();
                 string[][] output = null;
                 dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 if (NoteListSearch == "")
                 {
                     output = FunSQL.SQLSELECT("SQLNote0004", Note.SQLNote0004, new string[] { }, new string[] { });
@@ -151,7 +175,7 @@ namespace Note
                     }
                     else if (output[i][7] != "1")
                     {
-                        subBox[6] = $"{subBox[6]}\n{output[i][6]}";
+                        subBox[6] = $"{subBox[6]}{output[i][6]}";
                     }
                     if (output[i][9] == "1")
                     {
@@ -166,9 +190,9 @@ namespace Note
                                 subBox[6]
                             );
                     }
-                    dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-                    dg1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
                 }
+                dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+                dg1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             }
         }
         public class AcessCls
@@ -301,6 +325,16 @@ namespace Note
             }
             ThisApplicationLoad.DataLoad();
             ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
+        }
+        private void tb2_Enter(object sender, EventArgs e)
+        {
+            p1.Width = 760;
+            tb2.Width = 720;
+        }
+        private void tb2_Leave(object sender, EventArgs e)
+        {
+            p1.Width = 300;
+            tb2.Width = 250;
         }
     }
 }

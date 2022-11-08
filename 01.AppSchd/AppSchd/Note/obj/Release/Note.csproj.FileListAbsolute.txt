@@ -11,3 +11,4 @@ E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.csproj.CoreCompileInputs.cache
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.csproj.CopyComplete
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.dll
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.pdb
+E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteContent.resources

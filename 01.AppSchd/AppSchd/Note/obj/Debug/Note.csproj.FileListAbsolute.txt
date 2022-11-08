@@ -1,6 +1,7 @@
 E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\Note.dll
 E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\Note.pdb
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.csproj.AssemblyReference.cache
+E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteContent.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteList.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteOneDay.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteNote.resources

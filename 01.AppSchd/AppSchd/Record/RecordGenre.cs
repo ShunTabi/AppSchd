@@ -132,7 +132,6 @@ namespace Record
                     output = FunSQL.SQLSELECT("SQLRecordGenre0001", Record.SQLRecordGenre0001, new string[] { "@GENRENAME" }, new string[] { $"%{RecordGenreSearch}%" });
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output.Length; i++)
                 {
                     dg.Rows.Add(

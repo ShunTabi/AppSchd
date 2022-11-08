@@ -222,7 +222,6 @@ namespace Schedule
                     output = FunSQL.SQLSELECT("SQLSchedule0002", Schedule.SQLSchedule0002, new string[] { "@KEYWORD" }, new string[] { $"%{ScheduleListSearch}%" });
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output.Length; i++)
                 {
                     dg.Rows.Add(

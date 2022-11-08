@@ -70,8 +70,10 @@
             this.tb2.Multiline = true;
             this.tb2.Name = "tb2";
             this.tb2.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.tb2.Size = new System.Drawing.Size(310, 350);
+            this.tb2.Size = new System.Drawing.Size(250, 350);
             this.tb2.TabIndex = 1;
+            this.tb2.Enter += new System.EventHandler(this.tb2_Enter);
+            this.tb2.Leave += new System.EventHandler(this.tb2_Leave);
             // 
             // b1
             // 
@@ -94,7 +96,7 @@
             this.p1.Dock = System.Windows.Forms.DockStyle.Left;
             this.p1.Location = new System.Drawing.Point(0, 0);
             this.p1.Name = "p1";
-            this.p1.Size = new System.Drawing.Size(350, 1000);
+            this.p1.Size = new System.Drawing.Size(300, 1000);
             this.p1.TabIndex = 23;
             // 
             // p2
@@ -102,7 +104,7 @@
             this.p2.BackColor = System.Drawing.Color.LightSteelBlue;
             this.p2.Dock = System.Windows.Forms.DockStyle.Left;
             this.p2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.p2.Location = new System.Drawing.Point(350, 0);
+            this.p2.Location = new System.Drawing.Point(300, 0);
             this.p2.Name = "p2";
             this.p2.Size = new System.Drawing.Size(900, 1000);
             this.p2.TabIndex = 25;
@@ -111,7 +113,7 @@
             // 
             this.p3.BackColor = System.Drawing.Color.Gainsboro;
             this.p3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.p3.Location = new System.Drawing.Point(1250, 0);
+            this.p3.Location = new System.Drawing.Point(1200, 0);
             this.p3.Name = "p3";
             this.p3.Size = new System.Drawing.Size(0, 1000);
             this.p3.TabIndex = 26;

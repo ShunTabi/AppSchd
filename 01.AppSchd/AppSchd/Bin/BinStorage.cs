@@ -196,9 +196,7 @@ namespace Bin
                     output2 = FunSQL.SQLSELECT("SQLBin0001", Bin.SQLBin0001, new string[] { "@VISIBLESTATUS", "@KEYWORD" }, new string[] { "0", $"%{BinStorageSearch}%" });
                 }
                 dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 dg2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg2.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output1.Length; i++)
                 {
                     dg1.Rows.Add(

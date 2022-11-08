@@ -210,7 +210,6 @@ namespace ToDo
                     output = FunSQL.SQLSELECT("SQLToDo0003", ToDo.SQLToDo0003, new string[] { "@KEYWORD" }, new string[] { $"%{ToDoCompSearch}%" });
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                dg.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
                 for (int i = 0; i < output.Length; i++)
                 {
                     dg.Rows.Add(
