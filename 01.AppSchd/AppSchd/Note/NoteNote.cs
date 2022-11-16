@@ -24,7 +24,7 @@ namespace Note
                 }
                 if (FunctionName == "記録")
                 {
-                    uc = new NoteOneDay
+                    uc = new NoteRecord
                     {
                         Dock = DockStyle.Fill,
                     };
@@ -76,7 +76,7 @@ namespace Note
         {
             if (l1.Text == "記録")
             {
-                NoteOneDay.AcessCls.DataLoad();
+                NoteRecord.AcessCls.DataLoad();
             }
             else if (l1.Text == "リスト")
             {

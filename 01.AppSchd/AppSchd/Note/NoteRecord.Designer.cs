@@ -1,6 +1,6 @@
 ﻿namespace Note
 {
-    partial class NoteOneDay
+    partial class NoteRecord
     {
         /// <summary> 
         /// 必要なデザイナー変数です。
@@ -155,7 +155,7 @@
             this.p6.Size = new System.Drawing.Size(0, 1000);
             this.p6.TabIndex = 26;
             // 
-            // NoteOneDay
+            // NoteRecord
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 23F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -165,7 +165,7 @@
             this.Controls.Add(this.p1);
             this.Font = new System.Drawing.Font("Meiryo UI", 9F);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.Name = "NoteOneDay";
+            this.Name = "NoteRecord";
             this.Size = new System.Drawing.Size(1000, 1000);
             this.Load += new System.EventHandler(this.NoteOneDay_Load);
             this.Resize += new System.EventHandler(this.NoteOneDay_Resize);

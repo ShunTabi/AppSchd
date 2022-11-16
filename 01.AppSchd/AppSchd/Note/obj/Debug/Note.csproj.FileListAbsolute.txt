@@ -3,7 +3,6 @@ E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Debug\Note.pdb
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.csproj.AssemblyReference.cache
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteContent.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteList.resources
-E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteOneDay.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteNote.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteSearch.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.Properties.Resources.resources
@@ -12,3 +11,4 @@ E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.csproj.CoreCompileInputs.cache
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.csproj.CopyComplete
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.dll
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.pdb
+E:\03.C#\01.AppSchd\AppSchd\Note\obj\Debug\Note.NoteRecord.resources

@@ -64,22 +64,25 @@ namespace Schedule
             public static void CreateContextMenuStrip(string SCHEDULEID, Panel p, Label l)
             {
                 ContextMenuStrip contextMenuStrip = new ContextMenuStrip();
-                contextMenuStrip.Items.Add("更新", Schedule.UpdateImg, (sender, e) =>
-                {
-                    if (Schedule.ScheduleFormInstance == null || Schedule.ScheduleFormInstance.IsDisposed)
-                    {
-                        Schedule.ScheduleFormInstance = new ScheduleForm("更新", "週間", SCHEDULEID);
-                        Schedule.ScheduleFormInstance.Show();
-                        Schedule.ScheduleFormInstance.Location = new Point(
-                            int.Parse(string.Format("{0}", ScheduleSchedule.SubLocation[0])),
-                            int.Parse(string.Format("{0}", ScheduleSchedule.SubLocation[1]))
-                            );
-                    }
-                });
                 string STATUSNAME = p.Name;
+                if (STATUSNAME != "完了" && STATUSNAME != "保留")
+                {
+                    contextMenuStrip.Items.Add("更新", Schedule.UpdateImg, (sender, e) =>
+                    {
+                        if (Schedule.ScheduleFormInstance == null || Schedule.ScheduleFormInstance.IsDisposed)
+                        {
+                            Schedule.ScheduleFormInstance = new ScheduleForm("更新", "週間", SCHEDULEID);
+                            Schedule.ScheduleFormInstance.Show();
+                            Schedule.ScheduleFormInstance.Location = new Point(
+                                int.Parse(string.Format("{0}", ScheduleSchedule.SubLocation[0])),
+                                int.Parse(string.Format("{0}", ScheduleSchedule.SubLocation[1]))
+                                );
+                        }
+                    });
+                }
                 if (STATUSNAME != "対応中")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→対応中)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→対応中)", Schedule.StatusImg, (sender, e) =>
                     {
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "1", SCHEDULEID });
                         DataLoad();
@@ -87,7 +90,7 @@ namespace Schedule
                 }
                 if (STATUSNAME != "未")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→未)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→未)", Schedule.StatusImg, (sender, e) =>
                     {
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "2", SCHEDULEID });
                         DataLoad();
@@ -95,7 +98,7 @@ namespace Schedule
                 }
                 if (STATUSNAME != "完了")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→完了)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→完了)", Schedule.StatusImg, (sender, e) =>
                     {
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "3", SCHEDULEID });
                         DataLoad();
@@ -103,7 +106,7 @@ namespace Schedule
                 }
                 if (STATUSNAME != "保留")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→保留)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→保留)", Schedule.StatusImg, (sender, e) =>
                     {
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "4", SCHEDULEID });
                         DataLoad();
@@ -169,16 +172,9 @@ namespace Schedule
                         $"\n【計画】：{output[i][2]}" +
                         $"\n【優先度】：{output[i][3]}{output[i][4]}" +
                         $"\n【進捗】：{output[i][5]}" +
-                        $"\n【開始時間】：{DateTime.Parse(output[i][6]).ToString("yyyy-MM-dd HH:mm")}" +
-                        $"\n【終了時間】：{DateTime.Parse(output[i][7]).ToString("yyyy-MM-dd HH:mm")}" +
+                        $"\n【開始時間】：{output[i][6]}" +
+                        $"\n【終了時間】：{output[i][7]}" +
                         $"\n【所要時間】：{output[i][8]}H";
-                    /*
-                        $"ＩＤ　　：{output[i][0]}" +
-                        $"\n位置　　：{output[i][9]}" +
-                        $"\n縦幅　　：{output[i][10]}" +
-                        $"\n位置値　：{(int.Parse(output[i][9]) * ScheduleHourLength / 60).ToString()}" +
-                        $"\n縦幅値　：{(int.Parse(output[i][10]) * ScheduleHourLength / 60).ToString()}";
-                    */
                     ToolTip ttp1 = new ToolTip();
                     ttp1.AutoPopDelay = 10000;
                     ttp1.SetToolTip(p, DetailInfo);

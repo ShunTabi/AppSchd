@@ -160,33 +160,36 @@ namespace ToDo
                 {
                     ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
                 });
-                contextMenuStrip.Items.Add("更新", ToDo.UpdateImg, (sender, e) =>
-                {
-                    TODOID = ActiveRow.Cells[0].Value.ToString();
-                    string[][] output = FunSQL.SQLSELECT("SQLToDo0004", ToDo.SQLToDo0004, new string[] { "@TODOID" }, new string[] { TODOID });
-                    if (cmb1.FindStringExact(output[0][0]) < 0)
-                    {
-                        Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
-                        ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
-                    }
-                    cmb1.Text = output[0][0];
-                    if (cmb2.FindStringExact(output[0][1]) < 0)
-                    {
-                        Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
-                        ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
-                    }
-                    else
-                    {
-                        cmb2.Text = output[0][1];
-                        tb1.Text = output[0][2];
-                        tb2.Text = DateTime.Parse(output[0][3]).ToString("yyyy-MM-dd");
-                        b1.Text = "更新";
-                    }
-                });
                 string STATUSNAME = ActiveRow.Cells[5].Value.ToString();
+                if (STATUSNAME != "完了" && STATUSNAME != "保留")
+                {
+                    contextMenuStrip.Items.Add("更新", ToDo.UpdateImg, (sender, e) =>
+                    {
+                        TODOID = ActiveRow.Cells[0].Value.ToString();
+                        string[][] output = FunSQL.SQLSELECT("SQLToDo0004", ToDo.SQLToDo0004, new string[] { "@TODOID" }, new string[] { TODOID });
+                        if (cmb1.FindStringExact(output[0][0]) < 0)
+                        {
+                            Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
+                            ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
+                        }
+                        cmb1.Text = output[0][0];
+                        if (cmb2.FindStringExact(output[0][1]) < 0)
+                        {
+                            Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
+                            ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
+                        }
+                        else
+                        {
+                            cmb2.Text = output[0][1];
+                            tb1.Text = output[0][2];
+                            tb2.Text = output[0][3];
+                            b1.Text = "更新";
+                        }
+                    });
+                }
                 if (STATUSNAME != "対応中")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→対応中)", ToDo.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→対応中)", ToDo.StatusImg, (sender, e) =>
                     {
                         TODOID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "1", TODOID });
@@ -196,7 +199,7 @@ namespace ToDo
                 }
                 if (STATUSNAME != "未")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→未)", ToDo.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→未)", ToDo.StatusImg, (sender, e) =>
                     {
                         TODOID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "2", TODOID });
@@ -206,7 +209,7 @@ namespace ToDo
                 }
                 if (STATUSNAME != "完了")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→完了)", ToDo.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→完了)", ToDo.StatusImg, (sender, e) =>
                     {
                         TODOID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "3", TODOID });
@@ -216,7 +219,7 @@ namespace ToDo
                 }
                 if (STATUSNAME != "保留")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→保留)", ToDo.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→保留)", ToDo.StatusImg, (sender, e) =>
                     {
                         TODOID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "4", TODOID });
@@ -257,43 +260,37 @@ namespace ToDo
                 dg2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
                 for (int i = 0; i < output.Length; i++)
                 {
-                    if (output[i][4] != "完了")
+                    if (output[i][5] != "完了")
                     {
                         dg1.Rows.Add(
                             output[i][0],
-                            output[i][7],
                             output[i][1],
                             output[i][2],
                             output[i][3],
                             output[i][4],
-                            DateTime.Parse(output[i][5]).ToString("yyyy-MM-dd"),
-                            DateTime.Parse(output[i][6]).ToString("yyyy-MM-dd")
+                            output[i][5],
+                            output[i][6],
+                            output[i][7]
                             );
-                        if (output[i][7] != "")
+                        if (output[i][1] != "")
                         {
                             int count = dg1.Rows.Count - 1;
                             dg1.Rows[count].DefaultCellStyle.BackColor = Color.Gainsboro;
                             dg1.Rows[count].DefaultCellStyle.ForeColor = Color.Red;
                         }
                     }
-                    else if (output[i][4] == "完了")
+                    else if (output[i][5] == "完了")
                     {
                         dg2.Rows.Add(
                             output[i][0],
-                            output[i][7],
                             output[i][1],
                             output[i][2],
                             output[i][3],
                             output[i][4],
-                            DateTime.Parse(output[i][5]).ToString("yyyy-MM-dd"),
-                            DateTime.Parse(output[i][6]).ToString("yyyy-MM-dd")
+                            output[i][5],
+                            output[i][6],
+                            output[i][7]
                             );
-                        if (output[i][7] != "")
-                        {
-                            int count = dg1.Rows.Count - 1;
-                            dg2.Rows[count].DefaultCellStyle.BackColor = Color.Gainsboro;
-                            dg2.Rows[count].DefaultCellStyle.ForeColor = Color.Red;
-                        }
                     }
                 }
                 dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AppToDo.Properties
+namespace AppSchd.Properties
 {
 
 

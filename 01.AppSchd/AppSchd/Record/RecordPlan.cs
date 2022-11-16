@@ -97,7 +97,7 @@ namespace Record
                 DataRow dr2;
                 dt2.Columns.Add("ValueMember");
                 dt2.Columns.Add("DisplayMember");
-                string sql = "SELECT PRIORID,PRIORNAME FROM T_PRIOR WHERE PRIORVISIBLESTATUS=1 ORDER BY PRIORID ASC";
+                string sql = "SELECT PRIORID,PRIORNAME||'('||PRIORSUBNAME||')' AS PRIORNAME FROM T_PRIOR WHERE PRIORVISIBLESTATUS=1 ORDER BY PRIORID ASC";
                 string[][] output2 = FunSQL.SQLSELECT("PriorStatusSQL", sql, new string[] { }, new string[] { });
                 for (int i = 0; i < output2.Length; i++)
                 {
@@ -153,15 +153,15 @@ namespace Record
                             cmb1.Text = output[0][0];
                             tb1.Text = output[0][1];
                             cmb2.Text = output[0][2];
-                            tb2.Text = DateTime.Parse(output[0][3]).ToString("yyyy-MM-dd");
-                            tb3.Text = DateTime.Parse(output[0][4]).ToString("yyyy-MM-dd");
+                            tb2.Text = output[0][3];
+                            tb3.Text = output[0][4];
                             b1.Text = "更新";
                         }
                     });
                 }
                 if (STATUSNAME != "対応中")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→対応中)", Record.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→対応中)", Record.StatusImg, (sender, e) =>
                     {
                         PLANID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLRecordPlan0022", Record.SQLRecordPlan0022, new string[] { "@STATUSID", "@PLANID" }, new string[] { "1", PLANID });
@@ -175,7 +175,7 @@ namespace Record
                 }
                 if (STATUSNAME != "未")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→未)", Record.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→未)", Record.StatusImg, (sender, e) =>
                     {
                         PLANID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLRecordPlan0022", Record.SQLRecordPlan0022, new string[] { "@STATUSID", "@PLANID" }, new string[] { "2", PLANID });
@@ -189,7 +189,7 @@ namespace Record
                 }
                 if (STATUSNAME != "完了")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→完了)", Record.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→完了)", Record.StatusImg, (sender, e) =>
                     {
                         PLANID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLRecordPlan0022", Record.SQLRecordPlan0022, new string[] { "@STATUSID", "@PLANID" }, new string[] { "3", PLANID });
@@ -200,7 +200,7 @@ namespace Record
                 }
                 if (STATUSNAME != "保留")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→保留)", Record.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→保留)", Record.StatusImg, (sender, e) =>
                     {
                         PLANID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLRecordPlan0022", Record.SQLRecordPlan0022, new string[] { "@STATUSID", "@PLANID" }, new string[] { "4", PLANID });
@@ -243,16 +243,16 @@ namespace Record
                 {
                     dg.Rows.Add(
                         output[i][0],
-                        output[i][8],
                         output[i][1],
                         output[i][2],
                         output[i][3],
                         output[i][4],
-                        DateTime.Parse(output[i][5]).ToString("yyyy-MM-dd"),
-                        DateTime.Parse(output[i][6]).ToString("yyyy-MM-dd"),
-                        DateTime.Parse(output[i][7]).ToString("yyyy-MM-dd")
+                        output[i][5],
+                        output[i][6],
+                        output[i][7],
+                        output[i][8]
                         );
-                    if (output[i][8] != "")
+                    if (output[i][1] != "")
                     {
                         int count = dg.Rows.Count - 1;
                         dg.Rows[count].DefaultCellStyle.BackColor = Color.Gainsboro;

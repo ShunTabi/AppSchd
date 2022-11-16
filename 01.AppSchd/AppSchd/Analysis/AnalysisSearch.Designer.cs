@@ -74,9 +74,9 @@
             this.l5.AutoSize = true;
             this.l5.Location = new System.Drawing.Point(14, 280);
             this.l5.Name = "l5";
-            this.l5.Size = new System.Drawing.Size(111, 23);
+            this.l5.Size = new System.Drawing.Size(118, 23);
             this.l5.TabIndex = 34;
-            this.l5.Text = "対象期間2：";
+            this.l5.Text = "集計終了月：";
             // 
             // tb1
             // 
@@ -90,27 +90,27 @@
             this.l4.AutoSize = true;
             this.l4.Location = new System.Drawing.Point(14, 214);
             this.l4.Name = "l4";
-            this.l4.Size = new System.Drawing.Size(111, 23);
+            this.l4.Size = new System.Drawing.Size(118, 23);
             this.l4.TabIndex = 33;
-            this.l4.Text = "対象期間1：";
+            this.l4.Text = "集計開始月：";
             // 
             // l3
             // 
             this.l3.AutoSize = true;
             this.l3.Location = new System.Drawing.Point(14, 148);
             this.l3.Name = "l3";
-            this.l3.Size = new System.Drawing.Size(117, 23);
+            this.l3.Size = new System.Drawing.Size(106, 23);
             this.l3.TabIndex = 32;
-            this.l3.Text = "対象データ2：";
+            this.l3.Text = "対象データ：";
             // 
             // l2
             // 
             this.l2.AutoSize = true;
             this.l2.Location = new System.Drawing.Point(14, 84);
             this.l2.Name = "l2";
-            this.l2.Size = new System.Drawing.Size(117, 23);
+            this.l2.Size = new System.Drawing.Size(108, 23);
             this.l2.TabIndex = 31;
-            this.l2.Text = "対象データ1：";
+            this.l2.Text = "集計レベル：";
             // 
             // b1
             // 

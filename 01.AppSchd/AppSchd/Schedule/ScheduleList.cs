@@ -127,35 +127,38 @@ namespace Schedule
                 {
                     ThisApplicationCleaning.FormCleaning(tb1, tb2, tb3, b1);
                 });
-                contextMenuStrip.Items.Add("更新", Schedule.UpdateImg, (sender, e) =>
-                {
-                    SCHEDULEID = ActiveRow.Cells[0].Value.ToString();
-                    string[][] output = FunSQL.SQLSELECT("SQLSchedule0003", Schedule.SQLSchedule0003, new string[] { "@SCHEDULEID" }, new string[] { SCHEDULEID });
-                    if (cmb1.FindStringExact(output[0][0]) < 0)
-                    {
-                        Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
-                        ThisApplicationCleaning.FormCleaning(tb1, tb2, tb3, b1);
-                        return;
-                    }
-                    cmb1.Text = output[0][0];
-                    if (cmb2.FindStringExact(output[0][1]) < 0)
-                    {
-                        Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
-                        ThisApplicationCleaning.FormCleaning(tb1, tb2, tb3, b1);
-                    }
-                    else
-                    {
-                        cmb2.Text = output[0][1];
-                        tb1.Text = DateTime.Parse(output[0][2]).ToString("yyyy-MM-dd");
-                        tb2.Text = DateTime.Parse(output[0][3]).ToString("HH:mm");
-                        tb3.Text = DateTime.Parse(output[0][4]).ToString("HH:mm");
-                        b1.Text = "更新";
-                    }
-                });
                 string STATUSNAME = ActiveRow.Cells[4].Value.ToString();
+                if (STATUSNAME != "完了" && STATUSNAME != "保留")
+                {
+                    contextMenuStrip.Items.Add("更新", Schedule.UpdateImg, (sender, e) =>
+                    {
+                        SCHEDULEID = ActiveRow.Cells[0].Value.ToString();
+                        string[][] output = FunSQL.SQLSELECT("SQLSchedule0003", Schedule.SQLSchedule0003, new string[] { "@SCHEDULEID" }, new string[] { SCHEDULEID });
+                        if (cmb1.FindStringExact(output[0][0]) < 0)
+                        {
+                            Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
+                            ThisApplicationCleaning.FormCleaning(tb1, tb2, tb3, b1);
+                            return;
+                        }
+                        cmb1.Text = output[0][0];
+                        if (cmb2.FindStringExact(output[0][1]) < 0)
+                        {
+                            Task ActiveTask = FunFile.ErrEvtProc("更新できません", 0);
+                            ThisApplicationCleaning.FormCleaning(tb1, tb2, tb3, b1);
+                        }
+                        else
+                        {
+                            cmb2.Text = output[0][1];
+                            tb1.Text = output[0][2];
+                            tb2.Text = output[0][3];
+                            tb3.Text = output[0][4];
+                            b1.Text = "更新";
+                        }
+                    });
+                }
                 if (STATUSNAME != "対応中")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→対応中)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→対応中)", Schedule.StatusImg, (sender, e) =>
                     {
                         SCHEDULEID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "1", SCHEDULEID });
@@ -165,7 +168,7 @@ namespace Schedule
                 }
                 if (STATUSNAME != "未")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→未)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→未)", Schedule.StatusImg, (sender, e) =>
                     {
                         SCHEDULEID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "2", SCHEDULEID });
@@ -175,7 +178,7 @@ namespace Schedule
                 }
                 if (STATUSNAME != "完了")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→完了)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→完了)", Schedule.StatusImg, (sender, e) =>
                     {
                         SCHEDULEID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "3", SCHEDULEID });
@@ -185,7 +188,7 @@ namespace Schedule
                 }
                 if (STATUSNAME != "保留")
                 {
-                    contextMenuStrip.Items.Add("ステータス変更(→保留)", Schedule.StatusImg, (sender, e) =>
+                    contextMenuStrip.Items.Add("進捗更新(→保留)", Schedule.StatusImg, (sender, e) =>
                     {
                         SCHEDULEID = ActiveRow.Cells[0].Value.ToString();
                         FunSQL.SQLDML("SQLSchedule0022", Schedule.SQLSchedule0022, new string[] { "@STATUSID", "@SCHEDULEID" }, new string[] { "4", SCHEDULEID });
@@ -226,17 +229,17 @@ namespace Schedule
                 {
                     dg.Rows.Add(
                         output[i][0],
-                        output[i][9],
                         output[i][1],
                         output[i][2],
                         output[i][3],
-                        DateTime.Parse(output[i][4]).ToString("yyyy-MM-dd"),
-                        DateTime.Parse(output[i][5]).ToString("HH:mm"),
-                        DateTime.Parse(output[i][6]).ToString("HH:mm"),
+                        output[i][4],
+                        output[i][5],
+                        output[i][6],
                         output[i][7],
-                        DateTime.Parse(output[i][8]).ToString("yyyy-MM-dd")
+                        output[i][8],
+                        output[i][9]
                         );
-                    if (output[i][9] != "")
+                    if (output[i][1] != "")
                     {
                         int count = dg.Rows.Count - 1;
                         dg.Rows[count].DefaultCellStyle.BackColor = Color.Gainsboro;

@@ -14,7 +14,8 @@ namespace Note
         public static DataGridViewRow ActiveRow1 = null;
         public static string NOTETITLEID = "";
         public static string SOURCEID = "";
-        public static string NoteListSearch = "";
+        public static int NoteListSearch0 = 1;
+        public static string NoteListSearch1 = "";
         public static string[] SubLocation = FunFile.GetString(FunFile.iniDefault, "[SUB]", "SubLocation");
         class ThisApplicationSetup
         {
@@ -109,7 +110,7 @@ namespace Note
                 {
                     NOTETITLEID = ActiveRow.Cells[0].Value.ToString();
                     SOURCEID = ActiveRow.Cells[1].Value.ToString();
-                    string[][] output = FunSQL.SQLSELECT("SQLNote0002", Note.SQLNote0002, new string[] { "@NOTETITLEID" }, new string[] { NOTETITLEID });
+                    string[][] output = FunSQL.SQLSELECT("SQLNote0007", Note.SQLNote0007, new string[] { "@NOTETITLEID" }, new string[] { NOTETITLEID });
                     string[] subBox = new string[] { };
                     for (int i = 0; i < output.Length; i++)
                     {
@@ -131,7 +132,7 @@ namespace Note
                     ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
                     NOTETITLEID = ActiveRow.Cells[0].Value.ToString();
                     SOURCEID = ActiveRow.Cells[1].Value.ToString();
-                    string[][] output = FunSQL.SQLSELECT("SQLNote0002", Note.SQLNote0002, new string[] { "@NOTETITLEID" }, new string[] { NOTETITLEID });
+                    string[][] output = FunSQL.SQLSELECT("SQLNote0007", Note.SQLNote0007, new string[] { "@NOTETITLEID" }, new string[] { NOTETITLEID });
                     string[] subBox = new string[] { };
                     for (int i = 0; i < output.Length; i++)
                     {
@@ -144,7 +145,7 @@ namespace Note
                             subBox[2] = $"{subBox[2]}{output[i][2]}";
                         }
                     }
-                    Note.NoteContentInstance = new NoteContent(subBox[1], DateTime.Parse(subBox[0]).ToString("yyyy-MM-dd"), subBox[2]);
+                    Note.NoteContentInstance = new NoteContent(subBox[1], subBox[0], subBox[2]);
                     Note.NoteContentInstance.Show();
                     Note.NoteContentInstance.Location = new Point(
                         int.Parse(string.Format("{0}", SubLocation[0])),
@@ -158,13 +159,27 @@ namespace Note
                 dg1.Rows.Clear();
                 string[][] output = null;
                 dg1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-                if (NoteListSearch == "")
+                if (NoteListSearch1 == "")
                 {
-                    output = FunSQL.SQLSELECT("SQLNote0004", Note.SQLNote0004, new string[] { }, new string[] { });
+                    if (NoteListSearch0 == 0)
+                    {
+                        output = FunSQL.SQLSELECT("SQLNote0004", Note.SQLNote0004, new string[] { }, new string[] { });
+                    }
+                    else if (NoteListSearch0 == 1)
+                    {
+                        output = FunSQL.SQLSELECT("SQLNote0002", Note.SQLNote0002, new string[] { }, new string[] { });
+                    }
                 }
                 else
                 {
-                    output = FunSQL.SQLSELECT("SQLNote0005", Note.SQLNote0005, new string[] { "@KEYWORD" }, new string[] { $"%{NoteListSearch}%" });
+                    if (NoteListSearch0 == 0)
+                    {
+                        output = FunSQL.SQLSELECT("SQLNote0005", Note.SQLNote0005, new string[] { "@KEYWORD" }, new string[] { $"%{NoteListSearch1}%" });
+                    }
+                    else if (NoteListSearch0 == 1)
+                    {
+                        output = FunSQL.SQLSELECT("SQLNote0003", Note.SQLNote0003, new string[] { "@KEYWORD" }, new string[] { $"%{NoteListSearch1}%" });
+                    }
                 }
                 string[] subBox = new string[] { };
                 for (int i = 0; i < output.Length; i++)
@@ -186,7 +201,7 @@ namespace Note
                                 $"Ver：{subBox[3]}\n" +
                                 $"タイトル：{subBox[5]}\n" +
                                 $"種類：{subBox[4]}\n" +
-                                $"日付：" + DateTime.Parse(subBox[7]).ToString("yyyy-MM-dd"),
+                                $"日付：" + subBox[7],
                                 subBox[6]
                             );
                     }
@@ -215,14 +230,14 @@ namespace Note
             if (tb1.Text == "" || tb2.Text == "") { return; }
             if (b1.Text == "確定" && NOTETITLEID == "" && SOURCEID == "")
             {
-                if (FunSQL.SQLSELECT("SQLNote0001", Note.SQLNote0001, new string[] { "@NOTETITLE", "@NOTEDATE" }, new string[] { tb1.Text, DateTime.Now.ToString("yyyy-MM-dd") + "%" }).Length > 0) { return; }
+                if (FunSQL.SQLSELECT("SQLNote0006", Note.SQLNote0006, new string[] { "@NOTETITLE", "@NOTEDATE" }, new string[] { tb1.Text, DateTime.Now.ToString("yyyy-MM-dd") + "%" }).Length > 0) { return; }
                 string[] sqlcode = new string[] { "SQLNote0010" };
                 string[] sql = new string[] { Note.SQLNote0010 };
                 string[][] parameters = new string[][] {
                     new string[] { "@SOURCEID", "@KINDID", "@NOTETITLE", "@NOTETYPE", "@NOTEVERSION", "@NOTEDATE" },
                 };
                 string[][] values = new string[][] {
-                    new string[] { "0", "--", tb1.Text, "0", "0",DateTime.Now.ToString("yyyy-MM-dd") },
+                    new string[] { "0", "--", tb1.Text, "0", "0",DateTime.Now.ToString("yyyy-MM-dd 00:00:00") },
                 };
                 for (int i = 0; NOTETEXT.Length > 0; i++)
                 {
@@ -268,7 +283,7 @@ namespace Note
                 string[] sql = null;
                 string[][] parameters = null;
                 string[][] values = null;
-                if (FunSQL.SQLSELECT("SQLNote0003", Note.SQLNote0003, new string[] { "@SOURCEID", "@NOTEDATE" }, new string[] { thisSOURCEID, DateTime.Now.ToString("yyyy-MM-dd") + "%" }).Length > 0)
+                if (FunSQL.SQLSELECT("SQLNote0008", Note.SQLNote0008, new string[] { "@SOURCEID", "@NOTEDATE" }, new string[] { thisSOURCEID, DateTime.Now.ToString("yyyy-MM-dd") + "%" }).Length > 0)
                 {
                     sqlcode = new string[] { "SQLNote0021", "SQLNote0030" };
                     sql = new string[] { Note.SQLNote0021, Note.SQLNote0030 };
@@ -291,7 +306,7 @@ namespace Note
                     };
                     values = new string[][] {
                         new string[] { thisSOURCEID,NOTETITLEID,tb1.Text },
-                        new string[] { thisSOURCEID, "--", tb1.Text, "0", "0",DateTime.Now.ToString("yyyy-MM-dd") },
+                        new string[] { thisSOURCEID, "--", tb1.Text, "0", "0",DateTime.Now.ToString("yyyy-MM-dd 00:00:00") },
                     };
                 }
                 for (int i = 0; NOTETEXT.Length > 0; i++)

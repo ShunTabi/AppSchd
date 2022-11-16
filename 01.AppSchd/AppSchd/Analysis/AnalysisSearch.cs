@@ -37,7 +37,7 @@ namespace Analysis
                 cmb1.DataSource = dt1;
                 cmb1.ValueMember = "ValueMember";
                 cmb1.DisplayMember = "DisplayMember";
-                string[] Data1Names = { "GENRE", "GOAL", "PLAN" };
+                string[] Data1Names = { "GENRE(種別レベル)", "GOAL(目標レベル)", "PLAN(計画レベル)" };
                 for (int i = 0; i < Data1Names.Length; i++)
                 {
                     dr2 = dt2.NewRow();
@@ -76,7 +76,7 @@ namespace Analysis
                 dt13.Columns.Add("DisplayMember");
                 dr13 = dt13.NewRow();
                 dr13["ValueMember"] = "0";
-                dr13["DisplayMember"] = "ALL";
+                dr13["DisplayMember"] = "全て";
                 dt13.Rows.Add(dr13);
                 string NextMonth = DateTime.Parse(tb2.Text).AddMonths(1).ToString();
                 if (cmb2.SelectedValue.ToString() == "0")

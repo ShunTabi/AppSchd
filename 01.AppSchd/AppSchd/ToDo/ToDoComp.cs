@@ -128,6 +128,7 @@ namespace ToDo
                 {
                     ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
                 });
+                /*
                 contextMenuStrip.Items.Add("更新", ToDo.UpdateImg, (sender, e) =>
                 {
                     TODOID = ActiveRow.Cells[0].Value.ToString();
@@ -147,34 +148,26 @@ namespace ToDo
                     {
                         cmb2.Text = output[0][1];
                         tb1.Text = output[0][2];
-                        tb2.Text = DateTime.Parse(output[0][3]).ToString("yyyy-MM-dd");
+                        tb2.Text = output[0][3];
                         b1.Text = "更新";
                     }
                 });
-                contextMenuStrip.Items.Add("ステータス変更(→対応中)", ToDo.StatusImg, (sender, e) =>
+                 */
+                contextMenuStrip.Items.Add("進捗更新(→対応中)", ToDo.StatusImg, (sender, e) =>
                 {
                     TODOID = ActiveRow.Cells[0].Value.ToString();
                     FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "1", TODOID });
                     DataLoad();
                     ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
                 });
-                contextMenuStrip.Items.Add("ステータス変更(→未)", ToDo.StatusImg, (sender, e) =>
+                contextMenuStrip.Items.Add("進捗更新(→未)", ToDo.StatusImg, (sender, e) =>
                 {
                     TODOID = ActiveRow.Cells[0].Value.ToString();
                     FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "2", TODOID });
                     DataLoad();
                     ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
                 });
-                /*
-                contextMenuStrip.Items.Add("ステータス変更(→完了)", ToDo.StatusImg, (sender, e) =>
-                {
-                    TODOID = ActiveRow.Cells[0].Value.ToString();
-                    FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "3", TODOID });
-                    DataLoad();
-                    ThisApplicationCleaning.FormCleaning(tb1, tb2, b1);
-                });
-                */
-                contextMenuStrip.Items.Add("ステータス変更(→保留)", ToDo.StatusImg, (sender, e) =>
+                contextMenuStrip.Items.Add("進捗更新(→保留)", ToDo.StatusImg, (sender, e) =>
                 {
                     TODOID = ActiveRow.Cells[0].Value.ToString();
                     FunSQL.SQLDML("SQLToDo0022", ToDo.SQLToDo0022, new string[] { "@STATUSID", "@TODOID" }, new string[] { "4", TODOID });
@@ -219,11 +212,8 @@ namespace ToDo
                         output[i][2],
                         output[i][3],
                         output[i][4],
-                        DateTime.Parse(output[i][5]).ToString("yyyy-MM-dd"),
-                        DateTime.Parse(output[i][6]).ToString("yyyy-MM-dd")
-                        /*
-                         
-                         */
+                        output[i][5],
+                        output[i][6]
                         );
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;

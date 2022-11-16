@@ -111,7 +111,7 @@ namespace AppSchd
                 });
             }
         }
-        private void AppToDo_Load(object sender, EventArgs e)
+        private void AppSchd_Load(object sender, EventArgs e)
         {
             ThisApplicationSetup.ThisApplicationSetupExec(p1, p2);
             ThisApplicationStartup.ThisApplicationStartupExec();

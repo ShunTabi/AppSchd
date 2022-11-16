@@ -2,7 +2,6 @@ E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Release\Note.dll
 E:\03.C#\01.AppSchd\AppSchd\AppSchd\bin\Release\Note.pdb
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.csproj.AssemblyReference.cache
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteList.resources
-E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteOneDay.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteNote.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteSearch.resources
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.Properties.Resources.resources
@@ -12,3 +11,4 @@ E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.csproj.CopyComplete
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.dll
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.pdb
 E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteContent.resources
+E:\03.C#\01.AppSchd\AppSchd\Note\obj\Release\Note.NoteRecord.resources

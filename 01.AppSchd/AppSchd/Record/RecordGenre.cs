@@ -106,7 +106,7 @@ namespace Record
                 contextMenuStrip.Items.Add("収納箱へ", Record.ToStorageBinImg, (sender, e) =>
                 {
                     GENREID = ActiveRow.Cells[0].Value.ToString();
-                    FunSQL.SQLDML("SQLRecordGenre0021", Record.SQLRecordPlan0002, new string[] { "@VISIBLESTATUS", "@GENREID" }, new string[] { "2", GENREID });
+                    FunSQL.SQLDML("SQLRecordGenre0021", Record.SQLRecordGenre0021, new string[] { "@VISIBLESTATUS", "@GENREID" }, new string[] { "2", GENREID });
                     DataLoad();
                     ThisApplicationCleaning.FormCleaning(tb1, b1);
                 });
@@ -138,7 +138,7 @@ namespace Record
                         output[i][0],
                         "",
                         output[i][1],
-                        DateTime.Parse(output[i][2]).ToString("yyyy-MM-dd")
+                        output[i][2]
                         );
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;

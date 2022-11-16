@@ -67,7 +67,7 @@
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "AppSchd";
             this.Text = " AppSchd -C#";
-            this.Load += new System.EventHandler(this.AppToDo_Load);
+            this.Load += new System.EventHandler(this.AppSchd_Load);
             this.ResumeLayout(false);
 
         }

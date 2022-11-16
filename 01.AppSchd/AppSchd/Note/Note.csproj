@@ -56,11 +56,11 @@
     <Compile Include="NoteList.Designer.cs">
       <DependentUpon>NoteList.cs</DependentUpon>
     </Compile>
-    <Compile Include="NoteOneDay.cs">
+    <Compile Include="NoteRecord.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="NoteOneDay.Designer.cs">
-      <DependentUpon>NoteOneDay.cs</DependentUpon>
+    <Compile Include="NoteRecord.Designer.cs">
+      <DependentUpon>NoteRecord.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="NoteNote.cs">
@@ -98,8 +98,8 @@
     <EmbeddedResource Include="NoteList.resx">
       <DependentUpon>NoteList.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="NoteOneDay.resx">
-      <DependentUpon>NoteOneDay.cs</DependentUpon>
+    <EmbeddedResource Include="NoteRecord.resx">
+      <DependentUpon>NoteRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="NoteNote.resx">
       <DependentUpon>NoteNote.cs</DependentUpon>

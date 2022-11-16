@@ -170,7 +170,7 @@ namespace Record
                         "",
                         output[i][1],
                         output[i][2],
-                        DateTime.Parse(output[i][3]).ToString("yyyy-MM-dd")
+                        output[i][3]
                         );
                 }
                 dg.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
